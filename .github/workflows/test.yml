@@ -14,8 +14,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node_version }}
-      - run: npm install
-      - run: npm test -- --serial
+      - run: pnpm install
+      - run: pnpm test -- --serial
         env:
           FORCE_COLOR: true
           CI: false
