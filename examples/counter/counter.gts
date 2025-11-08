@@ -2,17 +2,18 @@ import { render, Text } from '../../src/index.js';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { registerDestructor } from '@ember/destroyable';
+import type Owner from '@ember/owner';
 
 class Counter extends Component {
 	@tracked counter = 0;
 
-	constructor(...args) {
-		super(...args);
+	constructor(owner: Owner, args: object) {
+		super(owner, args);
 
-		const timer = setInternal(() => {
+		const timer = setInterval(() => {
 				this.counter += 1;
 		}, 100);
-		registerDestructor(() => clearInterval(timer));
+		registerDestructor(this, () => clearInterval(timer));
 	}
 
 	<template>
