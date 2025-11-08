@@ -60,8 +60,9 @@
 		"yoga-layout": "~3.2.1"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.28.5",
-		"@babel/plugin-transform-typescript": "^7.28.5",
+		"@babel/core": "^8.0.0-beta.3",
+		"@babel/plugin-transform-runtime": "8.0.0-beta.3",
+		"@babel/plugin-transform-typescript": "^8.0.0-beta.3",
 		"@ember/library-tsconfig": "^1.1.3",
 		"@faker-js/faker": "^9.8.0",
 		"@glimmer/component": "^2.0.0",
@@ -94,6 +95,11 @@
 	},
 	"peerDependencies": {
 		"ember-source": ">=6.8.0"
+	},
+	"pnpm": {
+		"overrides": {
+			"@babel/core": "$@babel/core"
+		}
 	},
 	"ava": {
 		"workerThreads": false,

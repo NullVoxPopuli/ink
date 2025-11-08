@@ -16,7 +16,9 @@ class Counter extends Component {
 		registerDestructor(this, () => clearInterval(timer));
 	}
 
-	<template>{{this.counter}} tests passed</template>
+	<template>
+		<Text @color="green">{{this.counter}} tests passed</Text>
+	</template>
 }
 
 render(Counter);

@@ -1,6 +1,7 @@
 import {fileURLToPath} from 'node:url';
+import{join, resolve} from 'node:path';
 
-import babel from '@babel/core';
+import * as babel from '@babel/core';
 import {Preprocessor} from 'content-tag';
 
 const p = new Preprocessor();
@@ -48,18 +49,10 @@ export async function load(url, context, defaultLoad) {
 		};
 	}
 
-	const options = babel.loadOptions({
-		sourceType: format || 'module',
-		// eslint-disable-next-line no-undef
-		root: process.cwd(),
-		rootMode: 'root',
-		filename: filename,
-		configFile: true,
-	});
 
 	/**
 	 * technically, maybe (<template> can be omitted)
-	 */
+	*/
 	const needsContentTag = url.endsWith('.gjs') || url.endsWith('.gts');
 
 	let sourceForBabel = source;
@@ -71,7 +64,25 @@ export async function load(url, context, defaultLoad) {
 		sourceForBabel = output.code;
 	}
 
-	const transformed = await babel.transformAsync(sourceForBabel, options);
+	// womp https://github.com/nodejs/node/issues/59998#issuecomment-3506754016
+	const configPath = resolve(process.cwd(), 'babel.config.js');
+	const options =  babel.loadOptionsSync({
+		sourceType: format || 'module',
+		// eslint-disable-next-line no-undef
+		root: process.cwd(),
+		rootMode: 'root',
+		filename: filename,
+
+		configFile: true,
+	});
+	const config = await import(configPath);
+	const transformed = await babel.transformAsync(sourceForBabel, {
+		filename,
+		rootMode: 'root',
+		root: process.cwd(),
+		sourceType: format || 'module',
+		...config,
+	});
 
 	return {
 		source: transformed.code,
