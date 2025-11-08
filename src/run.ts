@@ -1,4 +1,5 @@
 import {register} from 'node:module';
+import assert from 'node:assert';
 import {join, resolve} from 'node:path';
 
 import importMap from './launch-support/import-map.json' with {type: 'json'};
@@ -17,6 +18,8 @@ register(
 		},
 	},
 );
+
+assert(process.argv[1], `You must specify a script to run`);
 
 let path = resolve(process.cwd(), process.argv[1]);
 
