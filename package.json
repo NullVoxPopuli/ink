@@ -1,15 +1,10 @@
 {
-	"name": "ink",
+	"name": "enk",
 	"version": "0.0.0",
 	"description": "Ember for CLI",
 	"type": "module",
 	"license": "MIT",
 	"repository": "NullVoxPopuli/ink",
-	"author": {
-		"name": "Vadim Demedes",
-		"email": "vadimdemedes@hey.com",
-		"url": "https://github.com/vadimdemedes"
-	},
 	"type": "module",
 	"exports": {
 		"types": "./build/index.d.ts",
@@ -19,8 +14,6 @@
 		"node": ">=24"
 	},
 	"scripts": {
-		"dev": "tsc --watch",
-		"build": "tsc",
 		"prepare": "npm run build",
 		"test": "tsc --noEmit && xo && FORCE_COLOR=true ava",
 		"example": "NODE_NO_WARNINGS=1 node ./src/run.ts",
@@ -31,6 +24,7 @@
 		"build"
 	],
 	"keywords": [
+		"ember",
 		"react",
 		"cli",
 		"jsx",
