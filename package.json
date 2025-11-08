@@ -6,16 +6,18 @@
 	"license": "MIT",
 	"repository": "NullVoxPopuli/ink",
 	"exports": {
-		".": "src/index.ts"
+		".": "src/index.ts",
+		"./register": "src/register.ts"
 	},
 	"bin": "./src/run.ts",
 	"engines": {
 		"node": ">=24"
 	},
 	"scripts": {
+		"bin-run": "NODE_NO_WARNINGS=1 node ./src/run.ts",
+		"enk": "pnpm bin-run",
 		"test": "FORCE_COLOR=true ava",
-		"example": "NODE_NO_WARNINGS=1 node ./src/run.ts",
-		"example:counter": "pnpm example ./examples/counter/index.ts",
+		"example:counter": "pnpm enk ./examples/counter/index.ts",
 		"benchmark": "NODE_NO_WARNINGS=1 node --loader ts-node/esm"
 	},
 	"files": [
