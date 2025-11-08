@@ -68,7 +68,16 @@
 		"yoga-layout": "~3.2.1"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.28.5",
+		"@babel/plugin-transform-typescript": "^7.28.5",
+		"@embroider/core": "^4.2.5",
+		"@embroider/macros": "^1.19.2",
+		"@embroider/vite": "^1.3.6",
 		"@faker-js/faker": "^9.8.0",
+		"@glint/ember-tsc": "^1.0.7",
+		"@glint/template": "^1.7.2",
+		"@glint/tsserver-plugin": "^2.0.7",
+		"@rollup/plugin-babel": "^6.1.0",
 		"@sindresorhus/tsconfig": "^7.0.0",
 		"@sinonjs/fake-timers": "^14.0.0",
 		"@types/ms": "^2.1.0",
@@ -81,8 +90,11 @@
 		"@types/ws": "^8.18.1",
 		"@vdemedes/prettier-config": "^2.0.1",
 		"ava": "^5.1.1",
+		"babel-plugin-ember-template-compilation": "^3.0.1",
 		"boxen": "^8.0.1",
+		"decorator-transforms": "^2.3.0",
 		"delay": "^6.0.0",
+		"ember-source": "^6.8.1",
 		"eslint-config-xo-react": "0.27.0",
 		"eslint-plugin-react": "^7.37.5",
 		"eslint-plugin-react-hooks": "^5.0.0",
@@ -96,6 +108,7 @@
 		"strip-ansi": "^7.1.0",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.8.3",
+		"vite": "^7.2.2",
 		"xo": "^0.59.3"
 	},
 	"peerDependencies": {
